@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="daemon" default="daemon-restart">
+
+<target name="daemon-restart">
+    <exec executable="supervisorctl" failonerror="true">
+        <arg value="restart" />
+        <arg value="${daemon-name}" />
+    </exec>
+</target>
+
+<target name="daemon-start">
+    <exec executable="supervisorctl" failonerror="true">
+        <arg value="start" />
+        <arg value="${daemon-name}" />
+    </exec>
+</target>
+
+<target name="daemon-stop">
+    <exec executable="supervisorctl" failonerror="true">
+        <arg value="stop" />
+        <arg value="${daemon-name}" />
+    </exec>
+</target>
+
+</project>

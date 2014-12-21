@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="symfony" default="symfony-clear-cache">
+
+<target name="worker-clear-cache">
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="worker" />
+        <arg value="cache:clear" />
+        <arg value="--env=prod" />
+        <arg value="--no-warmup" />
+    </exec>
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="worker" />
+        <arg value="cache:clear" />
+        <arg value="--env=dev" />
+        <arg value="--no-warmup" />
+    </exec>
+</target>
+
+<target name="symfony-clear-cache">
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="app/console" />
+        <arg value="cache:clear" />
+        <arg value="--env=prod" />
+        <arg value="--no-warmup" />
+    </exec>
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="app/console" />
+        <arg value="cache:clear" />
+        <arg value="--env=dev" />
+        <arg value="--no-warmup" />
+    </exec>
+</target>
+
+<target name="symfony-schema-update">
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="app/console" />
+        <arg value="doctrine:schema:update" />
+        <arg value="--force" />
+    </exec>
+</target>
+
+<target name="symfony-migrations">
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="app/console" />
+        <arg value="--no-interaction" />
+        <arg value="doctrine:migrations:migrate" />
+    </exec>
+</target>
+
+<target name="symfony-tests">
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="vendor/phpunit/phpunit/phpunit" />
+        <arg value="-c" />
+        <arg value="app/" />
+    </exec>
+</target>
+
+</project>

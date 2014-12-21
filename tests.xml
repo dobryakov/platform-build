@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tests" default="phpunit">
+
+<target name="phpunit">
+    <exec executable="/usr/bin/php" failonerror="true">
+        <arg value="vendor/phpunit/phpunit/phpunit" />
+    </exec>
+</target>
+
+</project>

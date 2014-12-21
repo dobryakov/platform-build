@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="common" default="build">
+
+    <import file="./daemon.xml" />
+    <target name="build" depends="custom"/>
+
+</project>

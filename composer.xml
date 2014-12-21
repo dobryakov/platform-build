@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="composer" default="composer">
+
+<target name="composer.needed" description="Installing dependencies">
+    <available property="composer.json.exists" file="composer.json" />
+</target>
+
+<target name="composer" if="composer.json.exists" depends="composer.needed">
+    <exec executable="composer" failonerror="true">
+        <arg value="update" />
+        <arg value="--no-interaction" />
+    </exec>
+</target>
+
+</project>
